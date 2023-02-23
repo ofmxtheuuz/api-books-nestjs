@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: api_nest
+      MYSQL_ROOT_PASSWORD: mxtz2023
+      MYSQL_USER: mxtz
+      MYSQL_PASSWORD: mxtz2023
+    ports:
+      - "3303:3306"
+
+  app:
+    build: .
+    links:
+      - db
+    ports:
+      - "3000:3000"
