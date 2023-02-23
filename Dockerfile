@@ -8,6 +8,10 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+ENV DB_HOST=db
+ENV DB_PORT=3306
+ENV DB_USER=mxtz
+ENV DB_PASSWORD=mxtz2023
+ENV DB_NAME=api_nest
 
-CMD [ "npm", "run", "start" ]
+CMD ["npm", "run", "start:dev"]

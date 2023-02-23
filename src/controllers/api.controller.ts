@@ -1,4 +1,5 @@
 import { Controller, Get, Param, Post, Body, Delete } from '@nestjs/common';
+import { Book } from 'src/database/entities/Book';
 import { ApiService } from '../utils/services/api.service';
 
 @Controller()
@@ -26,8 +27,8 @@ export class ApiController {
   }
 
   @Post("book/insert")
-  async insert(@Body("name") name: string, @Body("author") author: string, @Body("year") year: number, @Body("category") category: string) {
-    return await this._s.insert({ name, author, year, category })
+  async insert(@Body() body): Promise<Book> {
+    return await this._s.insert(body)
   }
 
   @Delete("book/delete/:id")
